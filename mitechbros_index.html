@@ -1,0 +1,1128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#080808" />
+  <meta name="description" content="MITechBros. — friendly, practical tech support for homes and small businesses across Western Michigan. Apple, Windows, networking, websites, AI setup and everyday tech help." />
+  <title>MITechBros. — Clarity for everyday technology.</title>
+
+  <style>
+    :root{
+      --ink:#080808;
+      --ink-2:#111214;
+      --paper:#f4f0e8;
+      --paper-2:#ddd7cc;
+      --muted:#a6a29b;
+      --line:rgba(244,240,232,.15);
+      --cobalt:#2e5bff;
+      --acid:#c9ff46;
+      --max:1180px;
+      --radius:24px;
+      --shadow:0 24px 80px rgba(0,0,0,.28);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--ink);
+      color:var(--paper);
+      font-family:Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    button,input,textarea,select{font:inherit}
+    img{max-width:100%;display:block}
+    :focus-visible{outline:3px solid var(--cobalt);outline-offset:4px}
+    ::selection{background:var(--cobalt);color:#fff}
+
+    .shell{
+      width:min(var(--max), calc(100% - 32px));
+      margin-inline:auto;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:30;
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      background:rgba(8,8,8,.80);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      letter-spacing:-.04em;
+      white-space:nowrap;
+    }
+
+    .brand-mark{
+      position:relative;
+      display:grid;
+      place-items:center;
+      width:40px;height:40px;
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:50%;
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:700;
+      font-size:17px;
+      letter-spacing:-.08em;
+    }
+
+    .brand-mark::after{
+      content:"";
+      position:absolute;
+      right:-6px;
+      top:7px;
+      width:2px;
+      height:28px;
+      background:var(--cobalt);
+      transform:rotate(28deg);
+      border-radius:2px;
+    }
+
+    .brand-word{
+      font-size:19px;
+    }
+
+    .brand-word i{
+      color:var(--cobalt);
+      font-style:normal;
+    }
+
+    .navlinks{
+      display:flex;
+      gap:24px;
+      align-items:center;
+      font-size:14px;
+      color:var(--paper-2);
+    }
+
+    .navlinks a:hover{color:#fff}
+
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      padding:0 18px;
+      border-radius:999px;
+      background:var(--cobalt);
+      color:white;
+      border:1px solid transparent;
+      font-weight:750;
+      letter-spacing:-.02em;
+      transition:.2s ease;
+      cursor:pointer;
+    }
+
+    .cta:hover{transform:translateY(-1px);filter:brightness(1.08)}
+    .cta.secondary{
+      background:transparent;
+      border-color:rgba(255,255,255,.24);
+      color:var(--paper);
+    }
+
+    .mobile-toggle{display:none}
+
+    .hero{
+      position:relative;
+      padding:clamp(76px, 11vw, 150px) 0 clamp(70px, 10vw, 128px);
+      min-height:76vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      border-bottom:1px solid var(--line);
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      opacity:.26;
+      pointer-events:none;
+      background:
+        linear-gradient(90deg, transparent 0 49.7%, rgba(255,255,255,.09) 49.8% 50%, transparent 50.1%),
+        linear-gradient(transparent 0 49.7%, rgba(255,255,255,.07) 49.8% 50%, transparent 50.1%);
+      background-size:76px 76px;
+      mask-image:linear-gradient(to bottom, black, transparent 78%);
+    }
+
+    .hero::after{
+      content:"/";
+      position:absolute;
+      right:-4vw;
+      bottom:-20vw;
+      font-size:min(72vw, 900px);
+      line-height:.8;
+      color:var(--cobalt);
+      opacity:.08;
+      font-weight:900;
+      transform:rotate(8deg);
+      pointer-events:none;
+    }
+
+    .hero-inner{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:minmax(0, 1.15fr) minmax(280px, .55fr);
+      align-items:end;
+      gap:clamp(36px, 8vw, 100px);
+    }
+
+    .eyebrow{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:12px;
+      font-weight:800;
+      color:var(--paper-2);
+      margin-bottom:20px;
+    }
+
+    .eyebrow::before{
+      content:"";
+      width:34px;height:2px;background:var(--cobalt);
+    }
+
+    h1,h2,h3,p{margin-top:0}
+    h1{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:500;
+      letter-spacing:-.055em;
+      line-height:.92;
+      font-size:clamp(58px, 10.2vw, 142px);
+      max-width:9ch;
+      margin-bottom:28px;
+    }
+
+    .hero-copy{
+      font-size:clamp(18px, 2.4vw, 27px);
+      max-width:780px;
+      color:var(--paper-2);
+      letter-spacing:-.025em;
+      line-height:1.35;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:30px;
+    }
+
+    .availability{
+      align-self:stretch;
+      border-left:1px solid var(--line);
+      padding-left:clamp(24px, 4vw, 54px);
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+    }
+
+    .availability strong{
+      font-size:clamp(24px, 3vw, 36px);
+      font-family:Georgia, "Times New Roman", serif;
+      line-height:1.05;
+      font-weight:500;
+      letter-spacing:-.04em;
+    }
+
+    .availability p{
+      color:var(--muted);
+      margin:16px 0 0;
+      font-size:15px;
+    }
+
+    .status{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      color:var(--paper-2);
+      font-size:13px;
+      margin-bottom:28px;
+    }
+
+    .status-dot{
+      width:10px;height:10px;border-radius:50%;
+      background:var(--acid);
+      box-shadow:0 0 0 5px rgba(201,255,70,.09);
+    }
+
+    section{
+      padding:clamp(72px, 9vw, 120px) 0;
+      border-bottom:1px solid var(--line);
+    }
+
+    .section-head{
+      display:grid;
+      grid-template-columns:.65fr 1.35fr;
+      gap:40px;
+      align-items:start;
+      margin-bottom:54px;
+    }
+
+    .kicker{
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .section-head h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(40px, 6.8vw, 86px);
+      letter-spacing:-.055em;
+      line-height:.98;
+      font-weight:500;
+      margin-bottom:14px;
+    }
+
+    .section-head p{
+      max-width:760px;
+      color:var(--paper-2);
+      font-size:clamp(17px, 2vw, 22px);
+      letter-spacing:-.02em;
+    }
+
+    .services{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+    }
+
+    .card{
+      position:relative;
+      min-height:320px;
+      background:var(--ink-2);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:26px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      overflow:hidden;
+    }
+
+    .card::after{
+      content:"/";
+      position:absolute;
+      right:20px;
+      top:12px;
+      color:var(--cobalt);
+      font-weight:900;
+      font-size:56px;
+      opacity:.7;
+      transform:rotate(13deg);
+    }
+
+    .card-num{
+      color:var(--muted);
+      font-size:12px;
+      letter-spacing:.12em;
+      font-weight:800;
+    }
+
+    .card h3{
+      font-size:clamp(28px, 3vw, 38px);
+      line-height:1;
+      letter-spacing:-.045em;
+      margin-bottom:14px;
+    }
+
+    .card p{
+      color:var(--muted);
+      margin:0;
+      font-size:15px;
+      max-width:32ch;
+    }
+
+    .price{
+      margin-top:30px;
+      font-size:16px;
+      color:var(--paper-2);
+    }
+
+    .price strong{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:32px;
+      color:var(--paper);
+      font-weight:500;
+      letter-spacing:-.04em;
+    }
+
+    .note{
+      margin-top:18px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .profile{
+      min-height:430px;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:var(--ink-2);
+      padding:clamp(28px, 4vw, 48px);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .profile .role{
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-weight:800;
+      font-size:12px;
+    }
+
+    .profile h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:500;
+      font-size:clamp(44px, 6vw, 78px);
+      letter-spacing:-.055em;
+      line-height:.92;
+      margin:10px 0 16px;
+    }
+
+    .profile p{
+      color:var(--paper-2);
+      max-width:520px;
+      font-size:17px;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:26px;
+    }
+
+    .tag{
+      padding:9px 12px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      color:var(--paper-2);
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .manifesto{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .manifesto blockquote{
+      margin:0;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(42px, 7vw, 94px);
+      line-height:.96;
+      letter-spacing:-.055em;
+    }
+
+    .manifesto blockquote em{
+      color:var(--cobalt);
+      font-style:normal;
+    }
+
+    .manifesto-copy{
+      color:var(--paper-2);
+      font-size:18px;
+      max-width:540px;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      border-top:1px solid var(--line);
+      border-left:1px solid var(--line);
+    }
+
+    .step{
+      min-height:230px;
+      padding:24px;
+      border-right:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .step b{
+      color:var(--cobalt);
+      display:block;
+      margin-bottom:55px;
+      font-size:12px;
+      letter-spacing:.12em;
+    }
+
+    .step h3{
+      font-size:24px;
+      letter-spacing:-.04em;
+      margin-bottom:8px;
+    }
+
+    .step p{color:var(--muted);font-size:14px;margin:0}
+
+    .faq{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    details{
+      background:var(--ink-2);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:0 20px;
+    }
+
+    summary{
+      list-style:none;
+      cursor:pointer;
+      padding:22px 38px 22px 0;
+      font-weight:750;
+      position:relative;
+      letter-spacing:-.02em;
+    }
+
+    summary::-webkit-details-marker{display:none}
+    summary::after{
+      content:"+";
+      position:absolute;
+      right:0;top:18px;
+      font-size:28px;
+      font-weight:400;
+      color:var(--cobalt);
+    }
+
+    details[open] summary::after{content:"–"}
+    details p{color:var(--muted);padding:0 0 20px;margin:0}
+
+    .contact{
+      display:grid;
+      grid-template-columns:.8fr 1.2fr;
+      gap:50px;
+      align-items:start;
+    }
+
+    .contact h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(48px, 7vw, 96px);
+      line-height:.92;
+      font-weight:500;
+      letter-spacing:-.055em;
+      margin-bottom:20px;
+    }
+
+    .contact p{color:var(--paper-2);font-size:18px}
+
+    form{
+      background:var(--paper);
+      color:var(--ink);
+      border-radius:var(--radius);
+      padding:clamp(22px, 4vw, 40px);
+      box-shadow:var(--shadow);
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    label{
+      display:block;
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      margin-bottom:7px;
+    }
+
+    input,textarea,select{
+      width:100%;
+      border:1px solid rgba(0,0,0,.16);
+      background:white;
+      color:#111;
+      border-radius:13px;
+      padding:14px 15px;
+      min-height:48px;
+    }
+
+    textarea{min-height:150px;resize:vertical}
+    .field{margin-bottom:14px}
+    .span-2{grid-column:span 2}
+
+    .form-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      margin-top:6px;
+    }
+
+    .copy-button{
+      border:0;
+      min-height:48px;
+      border-radius:999px;
+      padding:0 18px;
+      background:var(--ink);
+      color:white;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .form-status{
+      font-size:13px;
+      color:#555;
+    }
+
+    footer{
+      padding:48px 0 56px;
+      color:var(--muted);
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+      align-items:end;
+    }
+
+    .footer-big{
+      color:var(--paper);
+      font-size:clamp(34px, 5vw, 64px);
+      letter-spacing:-.06em;
+      font-weight:850;
+    }
+
+    .tiny{
+      font-size:12px;
+      line-height:1.55;
+      max-width:650px;
+      margin-left:auto;
+      text-align:right;
+    }
+
+    .draft{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      margin-top:20px;
+      padding:8px 10px;
+      border:1px solid rgba(201,255,70,.25);
+      color:#e8ffb4;
+      border-radius:999px;
+      font-size:12px;
+      background:rgba(201,255,70,.05);
+    }
+
+    @media (max-width: 900px){
+      .hero-inner,.section-head,.manifesto,.contact{grid-template-columns:1fr}
+      .availability{border-left:0;border-top:1px solid var(--line);padding:28px 0 0}
+      .services{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      .split{grid-template-columns:1fr}
+      .navlinks{display:none}
+      .mobile-toggle{
+        display:inline-flex;
+        border:1px solid var(--line);
+        background:transparent;
+        color:var(--paper);
+        width:44px;height:44px;
+        border-radius:50%;
+        align-items:center;
+        justify-content:center;
+        cursor:pointer;
+      }
+      .nav.is-open{
+        align-items:flex-start;
+        flex-wrap:wrap;
+        padding:14px 0;
+      }
+      .nav.is-open .navlinks{
+        display:flex;
+        width:100%;
+        flex-direction:column;
+        align-items:flex-start;
+        padding:10px 0 12px;
+        gap:16px;
+      }
+      .nav .desktop-cta{display:none}
+      .footer-grid{grid-template-columns:1fr}
+      .tiny{text-align:left;margin-left:0}
+    }
+
+    @media (max-width: 640px){
+      .shell{width:min(var(--max), calc(100% - 22px))}
+      .hero{min-height:auto}
+      .services{grid-template-columns:1fr}
+      .card{min-height:270px}
+      .steps{grid-template-columns:1fr}
+      .faq{grid-template-columns:1fr}
+      .form-grid{grid-template-columns:1fr}
+      .span-2{grid-column:auto}
+      .brand-word{font-size:17px}
+      h1{max-width:10ch}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{
+        animation-duration:.01ms !important;
+        transition-duration:.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="shell nav" id="nav">
+      <a class="brand" href="#top" aria-label="MITechBros home">
+        <span class="brand-mark">TB</span>
+        <span class="brand-word">MI<span style="color:#888">/</span>TECHBROS<i>.</i></span>
+      </a>
+
+      <nav class="navlinks" aria-label="Primary navigation">
+        <a href="#services">Services</a>
+        <a href="#team">Who you get</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="cta desktop-cta" href="#contact">Get tech help</a>
+      <button class="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu()">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-inner">
+        <div>
+          <div class="eyebrow">Western Michigan · Home + small business tech</div>
+          <h1>Clarity for everyday technology.</h1>
+          <p class="hero-copy">
+            Apple. Windows. Wi‑Fi. Websites. AI. The weird little problems in between.
+            Friendly, practical help from people who genuinely like figuring this stuff out.
+          </p>
+          <div class="hero-actions">
+            <a class="cta" href="#services">See services</a>
+            <a class="cta secondary" href="#contact">Tell us what's broken</a>
+          </div>
+        </div>
+
+        <aside class="availability" aria-label="Availability">
+          <div class="status"><span class="status-dot"></span> By appointment</div>
+          <strong>Available when the right schedules — and skill sets — align.</strong>
+          <p>
+            Depending on the job, you may work with one of us, both of us, or the person whose experience fits the problem best.
+            We keep it agile on purpose.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="shell">
+        <div class="section-head">
+          <div class="kicker">01 / Services</div>
+          <div>
+            <h2>Technology, intelligently handled.</h2>
+            <p>
+              No mystery bundles. No corporate theater. We diagnose, explain, fix what we can, teach what is useful,
+              and say so when a problem belongs somewhere else.
+            </p>
+            <div class="draft">● Draft launch pricing — easy to edit before publishing</div>
+          </div>
+        </div>
+
+        <div class="services">
+          <article class="card">
+            <span class="card-num">001</span>
+            <div>
+              <h3>Remote tech help</h3>
+              <p>Quick troubleshooting by phone, video, screen share, or chat when an in-person visit is not necessary.</p>
+              <div class="price"><strong>$45</strong> / 30 minutes</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <span class="card-num">002</span>
+            <div>
+              <h3>Home tech visit</h3>
+              <p>Computers, printers, smart devices, accounts, updates, setup, cleanup, and the stuff that “just stopped working.”</p>
+              <div class="price"><strong>$85</strong> / first hour</div>
+              <div class="note">Additional time quoted before we keep going.</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <span class="card-num">003</span>
+            <div>
+              <h3>New device setup</h3>
+              <p>Mac, PC, phone, tablet, accounts, updates, security basics, data transfer, and getting you comfortable with the new thing.</p>
+              <div class="price"><strong>$95</strong> / from</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <span class="card-num">004</span>
+            <div>
+              <h3>Wi‑Fi + networking</h3>
+              <p>Home and small-business routers, coverage problems, device connection issues, network cleanup, and practical upgrades.</p>
+              <div class="price"><strong>$125</strong> / from</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <span class="card-num">005</span>
+            <div>
+              <h3>Small business tech</h3>
+              <p>Workstations, basic network help, workflow cleanup, device rollout, troubleshooting, and technology that needs to behave during business hours.</p>
+              <div class="price"><strong>$125</strong> / hour</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <span class="card-num">006</span>
+            <div>
+              <h3>Web + AI setup</h3>
+              <p>Simple websites, domains, accounts, AI tools, personal workflows, and practical training without pretending everyone wants to become a developer.</p>
+              <div class="price"><strong>$65</strong> / hour</div>
+              <div class="note">Website projects quoted by scope.</div>
+            </div>
+          </article>
+        </div>
+
+        <p class="note">Parts, hardware, subscriptions, travel beyond our normal service area, and unusually complex work are priced separately and confirmed before purchase or extended work.</p>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="shell">
+        <div class="section-head">
+          <div class="kicker">02 / Who you get</div>
+          <div>
+            <h2>Same shop. Different lanes.</h2>
+            <p>We overlap where it helps and specialize where it matters.</p>
+          </div>
+        </div>
+
+        <div class="split">
+          <article class="profile">
+            <div>
+              <div class="role">Apple / Mac / people-facing support</div>
+              <h3>Apple brain.</h3>
+              <p>
+                Mac and Apple-focused support from an AppleCare Technical Support Advisor background:
+                troubleshooting, device setup, account issues, user education, accessibility-minded support,
+                and translating technical chaos into plain language.
+              </p>
+            </div>
+            <div class="tags">
+              <span class="tag">Mac + iPhone + iPad</span>
+              <span class="tag">AppleCare support background</span>
+              <span class="tag">Setup + migration</span>
+              <span class="tag">AI workflows</span>
+              <span class="tag">Patient explanation</span>
+            </div>
+          </article>
+
+          <article class="profile">
+            <div>
+              <div class="role">Windows / networking / home + small business</div>
+              <h3>Network brain.</h3>
+              <p>
+                Windows-trained support with networking skills for homes and small businesses:
+                PCs, routers, connectivity, device ecosystems, troubleshooting, and the practical infrastructure
+                that keeps everything talking to everything else.
+              </p>
+            </div>
+            <div class="tags">
+              <span class="tag">Windows</span>
+              <span class="tag">Home networking</span>
+              <span class="tag">Small business networks</span>
+              <span class="tag">Hardware triage</span>
+              <span class="tag">Fast troubleshooting</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell manifesto">
+        <blockquote>
+          Low gloss.<br />
+          <em>High competence.</em>
+        </blockquote>
+        <div class="manifesto-copy">
+          <p>
+            We are friendly, fast, supportive, and occasionally a little rough around the edges.
+            You do not need a perfect office, perfect vocabulary, or a pristine device before calling us.
+            We are not bringing high-gloss corporate theater into your house — and none is expected from you.
+          </p>
+          <p>
+            Bottom line: we love technology, including the occasional nonsense it throws our way.
+            We want to solve the immediate problem <strong>and</strong> leave you understanding your own technology better than before.
+          </p>
+          <p><strong>Come as you are. We will too.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="shell">
+        <div class="section-head">
+          <div class="kicker">03 / How it works</div>
+          <div>
+            <h2>Less ticket queue. More human.</h2>
+            <p>We keep the process simple enough that getting help does not become its own technical problem.</p>
+          </div>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <b>01</b>
+            <h3>Tell us the problem.</h3>
+            <p>Give us the useful version: what is happening, what should be happening, and what you have already tried.</p>
+          </div>
+          <div class="step">
+            <b>02</b>
+            <h3>We match the job.</h3>
+            <p>Apple, Windows, network, web, AI — we route it to the person whose schedule and skill set make sense.</p>
+          </div>
+          <div class="step">
+            <b>03</b>
+            <h3>We agree on the plan.</h3>
+            <p>Remote or in-person, likely cost, likely time, and any hardware or accounts we may need you to have ready.</p>
+          </div>
+          <div class="step">
+            <b>04</b>
+            <h3>Fix + explain.</h3>
+            <p>We solve what we can and explain enough that you are not left staring at the same problem next week.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="shell">
+        <div class="section-head">
+          <div class="kicker">04 / FAQ</div>
+          <div>
+            <h2>The practical stuff.</h2>
+          </div>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Where are you based?</summary>
+            <p>Western Michigan is home base. Travel outside our normal area may be possible when schedules and the job make sense.</p>
+          </details>
+          <details>
+            <summary>Do you have regular storefront hours?</summary>
+            <p>No. MITechBros. works by appointment around our existing schedules. That flexibility is part of the model, not an accident.</p>
+          </details>
+          <details>
+            <summary>Will I always get both of you?</summary>
+            <p>No. Some jobs need one person. Some benefit from both. We match the work to availability and experience rather than billing extra bodies for no reason.</p>
+          </details>
+          <details>
+            <summary>Do I have to know what is wrong?</summary>
+            <p>Absolutely not. “It keeps doing this weird thing” is often enough to start. Diagnosis is part of the work.</p>
+          </details>
+          <details>
+            <summary>Do you repair every kind of hardware?</summary>
+            <p>No. We troubleshoot broadly, but we will not pretend to do specialized board-level repair or advanced data recovery if the job belongs with a specialist. We can help identify the next step.</p>
+          </details>
+          <details>
+            <summary>Do you teach, or just fix things?</summary>
+            <p>Both. We like leaving people more confident with their technology, so explanation and education are part of the service whenever you want them.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="shell contact">
+        <div>
+          <div class="kicker">05 / Start here</div>
+          <h2>What is your tech doing now?</h2>
+          <p>
+            Build a quick inquiry below. The page will format it into a clean message you can copy and send by text, email, or whatever channel you use to reach us.
+          </p>
+          <p><strong>No jargon required.</strong></p>
+        </div>
+
+        <form id="inquiryForm" onsubmit="event.preventDefault(); buildInquiry();">
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" name="name" autocomplete="name" placeholder="Name" />
+            </div>
+            <div class="field">
+              <label for="location">Town / area</label>
+              <input id="location" name="location" autocomplete="address-level2" placeholder="Western Michigan" />
+            </div>
+
+            <div class="field span-2">
+              <label for="service">What kind of help?</label>
+              <select id="service" name="service">
+                <option>Not sure yet</option>
+                <option>Apple / Mac / iPhone / iPad</option>
+                <option>Windows / PC</option>
+                <option>Wi‑Fi / networking</option>
+                <option>New device setup / transfer</option>
+                <option>Small business tech</option>
+                <option>Website help</option>
+                <option>AI setup / coaching</option>
+                <option>Something else</option>
+              </select>
+            </div>
+
+            <div class="field span-2">
+              <label for="problem">Tell us what is happening</label>
+              <textarea id="problem" name="problem" placeholder="What is it doing? What should it be doing? What have you tried?"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="preference">Preferred format</label>
+              <select id="preference">
+                <option>No preference</option>
+                <option>Remote / video / phone</option>
+                <option>In-person</option>
+                <option>Whatever is fastest</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="timing">Timing</label>
+              <select id="timing">
+                <option>Flexible</option>
+                <option>ASAP</option>
+                <option>This week</option>
+                <option>Weekend if possible</option>
+              </select>
+            </div>
+
+            <div class="field span-2">
+              <label for="generated">Your formatted inquiry</label>
+              <textarea id="generated" readonly placeholder="Tap “Prepare inquiry” and your message will appear here."></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="copy-button" type="submit">Prepare inquiry</button>
+            <button class="copy-button" type="button" onclick="copyInquiry()" style="background:#2e5bff">Copy message</button>
+            <span class="form-status" id="formStatus" aria-live="polite"></span>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-grid">
+      <div>
+        <div class="footer-big">MI/TECHBROS<span style="color:var(--cobalt)">.</span></div>
+        <div>Western Michigan · Technology, intelligently handled.</div>
+      </div>
+      <div class="tiny">
+        Independent technology support. MITechBros. is not affiliated with or endorsed by Apple, Microsoft, or other product manufacturers.
+        Product and company names belong to their respective owners. Prices shown are draft launch rates and should be reviewed before publication.
+        <br><br>
+        Simple Minds Studios is the creative laboratory. MITechBros. is the service shop. Same intelligence. Different suit.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu(){
+      const nav = document.getElementById('nav');
+      const btn = document.querySelector('.mobile-toggle');
+      nav.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', nav.classList.contains('is-open') ? 'true' : 'false');
+    }
+
+    document.querySelectorAll('.navlinks a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('nav').classList.remove('is-open');
+        document.querySelector('.mobile-toggle')?.setAttribute('aria-expanded','false');
+      });
+    });
+
+    function buildInquiry(){
+      const name = document.getElementById('name').value.trim() || 'Not provided';
+      const location = document.getElementById('location').value.trim() || 'Not provided';
+      const service = document.getElementById('service').value;
+      const problem = document.getElementById('problem').value.trim() || 'I can explain when we connect.';
+      const preference = document.getElementById('preference').value;
+      const timing = document.getElementById('timing').value;
+
+      const message =
+`MITechBros. inquiry
+
+Name: ${name}
+Area: ${location}
+Type of help: ${service}
+Preferred format: ${preference}
+Timing: ${timing}
+
+What is happening:
+${problem}`;
+
+      document.getElementById('generated').value = message;
+      document.getElementById('formStatus').textContent = 'Inquiry ready.';
+    }
+
+    async function copyInquiry(){
+      const box = document.getElementById('generated');
+      const status = document.getElementById('formStatus');
+
+      if(!box.value.trim()){
+        buildInquiry();
+      }
+
+      try{
+        await navigator.clipboard.writeText(box.value);
+        status.textContent = 'Copied. Send it however you reach us.';
+      }catch(e){
+        box.focus();
+        box.select();
+        document.execCommand('copy');
+        status.textContent = 'Copied.';
+      }
+    }
+  </script>
+</body>
+</html>
