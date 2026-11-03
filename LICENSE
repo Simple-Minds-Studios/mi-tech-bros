@@ -1,0 +1,67 @@
+SIMPLE MINDS STUDIOS — SOURCE-VISIBLE RIGHTS NOTICE
+Version 1.0 — 2026-11-03
+Project: MITechBros
+Canonical source: https://github.com/Simple-Minds-Studios/mi-tech-bros
+
+Copyright © 2026 Bart Salazar and other credited rights holders, for their respective original contributions. Preserve earlier dates, ownership notices, and project-specific credits where supplied.
+Published by Simple Minds Studios.
+
+1. SCOPE AND OWNERSHIP
+
+These terms apply only to original, protectable material whose rights holders have authorized publication on these terms. They do not assert ownership of another person's work or transfer an author's copyright to the GitHub organization.
+
+Human-authored text, software, photographs, artwork, and original selection, arrangement, and editing may be protected to the extent provided by law. Facts, ideas, methods, systems, names, and purely machine-generated material are not claimed as copyrighted merely because they appear here. Preserve the credit of every identified collaborator, including Brad Devowe where credited.
+
+2. PUBLIC ACCESS
+
+The repository is source-visible for viewing, discussion, reference, and personal evaluation. Public availability does not by itself grant an open-source license or permission to reuse its original protected expression. For a private repository, these terms do not grant public access.
+
+GitHub's applicable platform terms, including rights to view and fork public repositories through GitHub, remain unaffected.
+
+3. REUSE AND NEW WORKS
+
+Except under an applicable existing license, separate written permission, or a legal exception, no permission is granted to reproduce, adapt, redistribute, incorporate protected expression into a new work, sublicense, sell, or commercially exploit the covered material.
+
+Giving credit alone is not permission. Where permission is required, obtain it from the actual rights holder before reuse.
+
+4. ATTRIBUTION FOR AUTHORIZED REUSE
+
+Unless a separate permission specifies otherwise, written permission from SMS for reuse of SMS-controlled original material is subject to:
+- identifying the project title and Bart Salazar / Simple Minds Studios;
+- preserving existing copyright, license, provenance, and collaborator notices;
+- linking to the canonical SMS repository or official project page;
+- identifying the version or commit and stating material changes;
+- distinguishing the reuser's contributions and avoiding any implication of SMS endorsement.
+
+Preferred credit:
+"[Project title]" — Bart Salazar / Simple Minds Studios, with the collaborators credited in the original. Source: [repository or project URL]. Version: [commit/date]. Adaptation: [name and summary of changes].
+
+For quotation, commentary, scholarship, independent inspiration, or other uses permitted by law without permission, this credit is a request, not an additional legal condition.
+
+5. AI USE
+
+No additional permission is granted by this notice for scraping, dataset compilation, model training, fine-tuning, distillation, or other AI reuse of covered material. This reservation does not override an existing license, public-domain status, or applicable legal exceptions.
+
+AI assistance does not establish human copyright in an output by itself. Human authorship, creative selection, arrangement, and revision must be assessed for the actual material concerned.
+
+6. THIRD-PARTY AND PRIOR LICENSES
+
+File-specific licenses, dependency licenses, public-domain material, earlier license grants, and separately agreed permissions retain their own scope and terms. Preserve third-party software, font, image, dataset, and other notices.
+
+These terms do not revoke or narrow permissions already granted under MIT, Creative Commons, or another applicable license, including in earlier published versions. If scope is uncertain, do not treat a later restrictive notice as withdrawing an earlier grant.
+
+If a generic repository-standard notice conflicts with an applicable file/component license, prior grant, platform term, or statutory exception, that applicable permission or exception controls.
+
+7. BRAND AND PROVENANCE
+
+No trademark license or endorsement is granted. Do not falsely claim authorship, remove legally required notices, or present an adaptation as an official SMS release. Accurate identification, criticism, and other lawful references remain permitted.
+
+8. NO WARRANTY
+
+THE COVERED MATERIAL IS PROVIDED "AS IS", WITHOUT WARRANTIES, TO THE EXTENT PERMITTED BY LAW. NO LIABILITY LIMITATION IN THIS NOTICE OVERRIDES MANDATORY LAW OR AN APPLICABLE EXISTING LICENSE.
+
+9. PERMISSIONS AND CONTACT
+
+Request licensing, commercial reuse, adaptations, exhibitions, or other permissions through the project's GitHub repository or https://simplemindsstudios.com/. Identify the exact files, version, proposed use, and attribution. Do not post private records or credentials in a public issue.
+
+This is a custom source-visible notice, not an OSI-approved open-source license. It is not a copyright registration, patent, or assignment of rights.
